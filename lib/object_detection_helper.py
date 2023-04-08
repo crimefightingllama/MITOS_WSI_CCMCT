@@ -197,12 +197,12 @@ def match_anchors(anchors, targets, match_thr=0.5, bkg_thr=0.4):
 
 
 
-def _draw_outline(o:Patch, lw:int):
+def _draw_outline(o, lw:int):
     "Outline bounding box onto image `Patch`."
     o.set_path_effects([patheffects.Stroke(
         linewidth=lw, foreground='black'), patheffects.Normal()])
 
-def draw_rect(ax:plt.Axes, b:Collection[int], color:str='white', text=None, text_size=14):
+def draw_rect(ax, b, color:str='white', text=None, text_size=14):
     "Draw bounding box on `ax`."
     patch = ax.add_patch(patches.Rectangle(b[:2], *b[-2:], fill=False, edgecolor=color, lw=2))
     _draw_outline(patch, 4)
@@ -211,7 +211,7 @@ def draw_rect(ax:plt.Axes, b:Collection[int], color:str='white', text=None, text
         _draw_outline(patch,1)
 
 
-def _draw_circ_outline(o:Patch, lw:int):
+def _draw_circ_outline(o, lw:int):
     "Outline bounding box onto image `Patch`."
     o.set_path_effects([patheffects.Stroke(
         linewidth=lw, foreground='black'), patheffects.Normal()])
@@ -256,7 +256,7 @@ def show_preds(img, bbox_pred, preds, scores, classes, figsize=(5,5)):
         draw_rect(ax, [bbox[1],bbox[0],bbox[3],bbox[2]], text=f'{txt} {scr:.2f}')
 
 
-def show_results_side_by_side(learn: Learner, anchors, detect_thresh:float=0.2, nms_thresh: float=0.3,  image_count: int=5):
+def show_results_side_by_side(learn, anchors, detect_thresh:float=0.2, nms_thresh: float=0.3,  image_count: int=5):
 
     with torch.no_grad():
         img_batch, target_batch = learn.data.one_batch(DatasetType.Valid, False, False, False)
