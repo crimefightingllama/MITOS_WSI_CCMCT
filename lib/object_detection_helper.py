@@ -57,7 +57,7 @@ def encode_class(idxs, n_classes):
     target = idxs.new_zeros(len(idxs), n_classes).float()
     mask = idxs != 0
     i1s = LongTensor(list(range(len(idxs))))
-    target[i1s[mask],idxs[mask]-1].cpu() = 1
+    target[i1s[mask],idxs[mask]-1.cpu()] = 1
     return target
 
 
