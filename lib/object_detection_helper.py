@@ -56,7 +56,7 @@ def tlbr2cthw(boxes):
 def encode_class(idxs, n_classes):
     target = idxs.new_zeros(len(idxs), n_classes).float()
     mask = idxs != 0
-    i1s = LongTensor(list(range(len(idxs))))
+    i1s = LongTensor(list(range(len(idxs)))).cpu()
     target[i1s[mask],idxs[mask]-1] = 1
     return target
 
