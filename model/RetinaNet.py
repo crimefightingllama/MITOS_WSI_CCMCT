@@ -1,6 +1,6 @@
 from fastai import *
 from fastai.vision import *
-from fastai.callbacks import *
+from fastai.callback import *
 from fastai.vision.models.unet import _get_sfs_idxs
 
 # export
